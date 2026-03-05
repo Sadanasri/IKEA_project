@@ -8,6 +8,7 @@ import img4 from '../assets/images/bus4.jpg';
 
 export default function SignupBusiness() {
     const navigate = useNavigate();
+    const [step, setStep] = useState(1);
     const [formData, setFormData] = useState({
         businessName: '', gstin: '', industry: '', address: '',
         postCode: '', firstName: '', surname: '', email: '', password: ''
@@ -53,109 +54,146 @@ export default function SignupBusiness() {
 
                 {/* Right side: Form Details */}
                 <div className="signup-right-col">
-                    <p style={{ fontSize: '0.875rem', marginBottom: '2rem' }}>
-                        Already have an IKEA Business Network account? <a href="#" style={{ textDecoration: 'underline' }} onClick={(e) => { e.preventDefault(); navigate('/login'); }}>Log in here</a>
-                    </p>
-
-                    <form onSubmit={(e) => { e.preventDefault(); navigate('/'); }}>
-                        <h3 style={{ fontSize: '1rem', marginBottom: '1rem', fontWeight: 'bold' }}>Business information</h3>
-
-                        <div className="signup-form-group">
-                            <label>Legal business name</label>
-                            <input type="text" name="businessName" className="signup-input" value={formData.businessName} onChange={handleChange} required />
-                        </div>
-
-                        <div className="signup-form-group">
-                            <label>GSTIN</label>
-                            <input type="text" name="gstin" className="signup-input" value={formData.gstin} onChange={handleChange} required />
-                            <span className="signup-helper-text">Add another address line</span>
-                        </div>
-
-                        <div className="signup-form-group">
-                            <label>Industry segment (Optional)</label>
-                            <select name="industry" className="signup-select" value={formData.industry} onChange={handleChange}>
-                                <option value="" disabled></option>
-                                <option value="retail">Retail</option>
-                                <option value="hospitality">Hospitality</option>
-                                <option value="office">Office/Corporate</option>
-                                <option value="other">Other</option>
-                            </select>
-                        </div>
-
-                        <div className="signup-form-group">
-                            <label>Address line 1</label>
-                            <input type="text" name="address" className="signup-input" value={formData.address} onChange={handleChange} required />
-                            <span className="signup-helper-text"><a href="#">Add another address line</a></span>
-                        </div>
-
-                        <div className="signup-form-group">
-                            <label>Post code</label>
-                            <input type="text" name="postCode" className="signup-input" value={formData.postCode} onChange={handleChange} required />
-                        </div>
-
-                        <h3 style={{ fontSize: '1rem', margin: '2rem 0 1rem', fontWeight: 'bold' }}>Personal information</h3>
-
-                        {/* Name fields */}
-                        <div className="signup-form-group">
-                            <label>First name</label>
-                            <input type="text" name="firstName" className="signup-input" value={formData.firstName} onChange={handleChange} required />
-                        </div>
-                        <div className="signup-form-group">
-                            <label>Surname</label>
-                            <input type="text" name="surname" className="signup-input" value={formData.surname} onChange={handleChange} required />
-                        </div>
-
-                        <div className="signup-form-group">
-                            <label>Email (username)</label>
-                            <input type="email" name="email" className="signup-input" value={formData.email} onChange={handleChange} required />
-                            <span className="signup-helper-text">Generic email addresses, such as info@email.com, might not receive communications</span>
-                        </div>
-
-                        {/* Password Logic */}
-                        <div className="signup-form-group">
-                            <label>Password</label>
-                            <div className="signup-input-wrapper">
-                                <input type="password" name="password" className="signup-input" value={formData.password} onChange={handleChange} required />
-                                <i className="bx bx-show signup-input-icon"></i>
-                            </div>
-                            <div className="password-constraints">
-                                <p>Make sure your password contains:</p>
-                                <ul>
-                                    <li>• Minimum of 8 characters</li>
-                                    <li>• One UPPERCASE letter</li>
-                                    <li>• One lowercase letter</li>
-                                    <li>• At least one number or one special character</li>
-                                </ul>
-                                <p style={{ marginTop: '0.5rem' }}>You've used no unexpected characters in a row</p>
-                            </div>
-                        </div>
-
-                        {/* Checkboxes */}
-                        <div className="signup-checkbox-block" style={{ marginTop: '2.5rem' }}>
-                            <label className="custom-checkbox">
-                                <input type="checkbox" />
-                                <span className="checkmark" style={{ top: '4px' }}></span>
-                            </label>
-                            <p className="signup-checkbox-text">
-                                Yes, I want to receive inspiration, business advice, tips and offers via email. I understand my profile will be assessed based on my browsing behavior. <a href="#">Read more about marketing communications.</a>
+                    {step === 1 ? (
+                        <>
+                            <p style={{ fontSize: '0.875rem', marginBottom: '2rem' }}>
+                                Already have an IKEA Business Network account? <a href="#" style={{ textDecoration: 'underline' }} onClick={(e) => { e.preventDefault(); navigate('/login'); }}>Log in here</a>
                             </p>
-                        </div>
 
-                        <div className="signup-checkbox-block">
-                            <label className="custom-checkbox">
-                                <input type="checkbox" required />
-                                <span className="checkmark" style={{ top: '4px' }}></span>
-                            </label>
-                            <p className="signup-checkbox-text">
-                                I confirm I am authorized to bind the company. I represent and accept the <a href="#">Terms & Conditions</a> and <a href="#">Privacy Policy</a>.
+                            <form onSubmit={(e) => { e.preventDefault(); setStep(2); }}>
+                                <h3 style={{ fontSize: '1rem', marginBottom: '1rem', fontWeight: 'bold' }}>Business information</h3>
+
+                                <div className="signup-form-group">
+                                    <label>Legal business name</label>
+                                    <input type="text" name="businessName" className="signup-input" value={formData.businessName} onChange={handleChange} required />
+                                </div>
+
+                                <div className="signup-form-group">
+                                    <label>GSTIN</label>
+                                    <input type="text" name="gstin" className="signup-input" value={formData.gstin} onChange={handleChange} required />
+                                    <span className="signup-helper-text">Add another address line</span>
+                                </div>
+
+                                <div className="signup-form-group">
+                                    <label>Industry segment (Optional)</label>
+                                    <select name="industry" className="signup-select" value={formData.industry} onChange={handleChange}>
+                                        <option value="" disabled></option>
+                                        <option value="retail">Retail</option>
+                                        <option value="hospitality">Hospitality</option>
+                                        <option value="office">Office/Corporate</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+
+                                <div className="signup-form-group">
+                                    <label>Address line 1</label>
+                                    <input type="text" name="address" className="signup-input" value={formData.address} onChange={handleChange} required />
+                                    <span className="signup-helper-text"><a href="#">Add another address line</a></span>
+                                </div>
+
+                                <div className="signup-form-group">
+                                    <label>Post code</label>
+                                    <input type="text" name="postCode" className="signup-input" value={formData.postCode} onChange={handleChange} required />
+                                </div>
+
+                                <h3 style={{ fontSize: '1rem', margin: '2rem 0 1rem', fontWeight: 'bold' }}>Personal information</h3>
+
+                                {/* Name fields */}
+                                <div className="signup-form-group">
+                                    <label>First name</label>
+                                    <input type="text" name="firstName" className="signup-input" value={formData.firstName} onChange={handleChange} required />
+                                </div>
+                                <div className="signup-form-group">
+                                    <label>Surname</label>
+                                    <input type="text" name="surname" className="signup-input" value={formData.surname} onChange={handleChange} required />
+                                </div>
+
+                                <div className="signup-form-group">
+                                    <label>Email (username)</label>
+                                    <input type="email" name="email" className="signup-input" value={formData.email} onChange={handleChange} required />
+                                    <span className="signup-helper-text">Generic email addresses, such as info@email.com, might not receive communications</span>
+                                </div>
+
+                                {/* Password Logic */}
+                                <div className="signup-form-group">
+                                    <label>Password</label>
+                                    <div className="signup-input-wrapper">
+                                        <input type="password" name="password" className="signup-input" value={formData.password} onChange={handleChange} required />
+                                        <i className="bx bx-show signup-input-icon"></i>
+                                    </div>
+                                    <div className="password-constraints">
+                                        <p>Make sure your password contains:</p>
+                                        <ul>
+                                            <li>• Minimum of 8 characters</li>
+                                            <li>• One UPPERCASE letter</li>
+                                            <li>• One lowercase letter</li>
+                                            <li>• At least one number or one special character</li>
+                                        </ul>
+                                        <p style={{ marginTop: '0.5rem' }}>You've used no unexpected characters in a row</p>
+                                    </div>
+                                </div>
+
+                                {/* Checkboxes */}
+                                <div className="signup-checkbox-block" style={{ marginTop: '2.5rem' }}>
+                                    <label className="custom-checkbox">
+                                        <input type="checkbox" />
+                                        <span className="checkmark" style={{ top: '4px' }}></span>
+                                    </label>
+                                    <p className="signup-checkbox-text">
+                                        Yes, I want to receive inspiration, business advice, tips and offers via email. I understand my profile will be assessed based on my browsing behavior. <a href="#">Read more about marketing communications.</a>
+                                    </p>
+                                </div>
+
+                                <div className="signup-checkbox-block">
+                                    <label className="custom-checkbox">
+                                        <input type="checkbox" required />
+                                        <span className="checkmark" style={{ top: '4px' }}></span>
+                                    </label>
+                                    <p className="signup-checkbox-text">
+                                        I confirm I am authorized to bind the company. I represent and accept the <a href="#">Terms & Conditions</a> and <a href="#">Privacy Policy</a>.
+                                    </p>
+                                </div>
+
+                                <button type="submit" className="signup-btn-primary">
+                                    Continue to email verification
+                                </button>
+
+                            </form>
+                        </>
+                    ) : (
+                        <div className="otp-verification-container" style={{ position: 'relative' }}>
+                            <i className='bx bx-x' style={{ position: 'absolute', top: '-1rem', right: '0', fontSize: '24px', cursor: 'pointer' }} onClick={() => setStep(1)}></i>
+                            <h2 style={{ fontSize: '1.5rem', marginBottom: '1rem', fontWeight: 'bold' }}>To create a IKEA Business Network account you need to verify your email address</h2>
+                            <p style={{ fontSize: '0.875rem', marginBottom: '2rem', color: '#484848', lineHeight: '1.5' }}>
+                                Please enter the six digit one time code you received on below email address.
                             </p>
+
+                            <div style={{ display: 'flex', alignItems: 'center', marginBottom: '2rem', fontSize: '0.875rem' }}>
+                                <span style={{ marginRight: '1rem', color: '#111' }}>{formData.email || 'info@corporate.com'}</span>
+                                <button type="button" onClick={() => setStep(1)} style={{ background: 'none', border: 'none', cursor: 'pointer', fontWeight: 'bold', display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
+                                    <i className='bx bx-pencil'></i> Edit
+                                </button>
+                            </div>
+
+                            <div className="signup-form-group">
+                                <label>One-time code</label>
+                                <input type="text" className="signup-input" placeholder="" />
+                                <div style={{ textAlign: 'right', marginTop: '0.5rem' }}>
+                                    <a href="#" style={{ fontSize: '0.875rem', color: '#111', fontWeight: 'bold', textDecoration: 'underline' }}>Send new code</a>
+                                </div>
+                            </div>
+
+                            <button type="button" className="signup-btn-primary" style={{ backgroundColor: '#0058a3', display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '2rem', padding: '1.25rem 1.5rem' }} onClick={() => {
+                                localStorage.setItem('isLoggedIn', 'true');
+                                navigate('/');
+                            }}>
+                                <span style={{ fontWeight: 'bold', fontSize: '1rem' }}>Complete Sign up</span>
+                                <div style={{ backgroundColor: 'white', color: '#0058a3', borderRadius: '50%', width: '28px', height: '28px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                                    <i className='bx bx-right-arrow-alt' style={{ fontSize: '20px' }}></i>
+                                </div>
+                            </button>
                         </div>
-
-                        <button type="submit" className="signup-btn-primary">
-                            Continue to email verification
-                        </button>
-
-                    </form>
+                    )}
                 </div>
             </div>
         </div>
