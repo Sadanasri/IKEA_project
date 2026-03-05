@@ -14,17 +14,20 @@ export default function SignupBusiness() {
     return (
         <div className="signup-page">
             <header className="signup-header">
-                <i className='bx bx-left-arrow-alt' style={{ fontSize: '24px', cursor: 'pointer', marginRight: '1rem' }} onClick={() => navigate('/login')}></i>
-                <svg width="60" height="24" viewBox="0 0 90 36" fill="none" xmlns="http://www.w3.org/2000/svg" className="signup-logo" onClick={() => navigate('/')}>
-                    <rect width="90" height="36" fill="#0058A3" />
-                    <ellipse cx="45" cy="18" rx="42" ry="15" fill="#FFCC00" />
-                    <text x="50%" y="54%" dominantBaseline="middle" textAnchor="middle" fontFamily="Arial" fontWeight="900" fontSize="20" fill="#0058A3" letterSpacing="1">IKEA</text>
-                </svg>
+                <button className="back-button" onClick={() => navigate('/login')} aria-label="Back">
+                    <i className='bx bx-arrow-back'></i>
+                </button>
             </header>
 
             <div className="signup-container">
                 {/* Left side: Images & Titles */}
                 <div className="signup-left-col">
+                    <svg width="80" height="32" viewBox="0 0 90 36" fill="none" xmlns="http://www.w3.org/2000/svg" className="signup-logo" onClick={() => navigate('/')}>
+                        <rect width="90" height="36" fill="#0058A3" />
+                        <ellipse cx="45" cy="18" rx="42" ry="15" fill="#FFCC00" />
+                        <text x="50%" y="54%" dominantBaseline="middle" textAnchor="middle" fontFamily="Arial" fontWeight="900" fontSize="20" fill="#0058A3" letterSpacing="1">IKEA</text>
+                    </svg>
+
                     <h1 className="signup-title" style={{ fontSize: '1.75rem' }}>Create a IKEA Business<br />Network account for free and<br />get:</h1>
 
                     <ul className="perks-list">
@@ -47,7 +50,7 @@ export default function SignupBusiness() {
                 {/* Right side: Form Details */}
                 <div className="signup-right-col">
                     <p style={{ fontSize: '0.875rem', marginBottom: '2rem' }}>
-                        Already have an IKEA Business Network account? Log in here <a href="#" style={{ textDecoration: 'underline' }} onClick={(e) => { e.preventDefault(); navigate('/login'); }}>log in here</a>
+                        Already have an IKEA Business Network account? <a href="#" style={{ textDecoration: 'underline' }} onClick={(e) => { e.preventDefault(); navigate('/login'); }}>Log in here</a>
                     </p>
 
                     <form onSubmit={(e) => { e.preventDefault(); navigate('/'); }}>

@@ -14,25 +14,32 @@ export default function SignupPersonal() {
     return (
         <div className="signup-page">
             <header className="signup-header">
-                <i className='bx bx-left-arrow-alt' style={{ fontSize: '24px', cursor: 'pointer', marginRight: '1rem' }} onClick={() => navigate('/login')}></i>
-                <svg width="60" height="24" viewBox="0 0 90 36" fill="none" xmlns="http://www.w3.org/2000/svg" className="signup-logo" onClick={() => navigate('/')}>
-                    <rect width="90" height="36" fill="#0058A3" />
-                    <ellipse cx="45" cy="18" rx="42" ry="15" fill="#FFCC00" />
-                    <text x="50%" y="54%" dominantBaseline="middle" textAnchor="middle" fontFamily="Arial" fontWeight="900" fontSize="20" fill="#0058A3" letterSpacing="1">IKEA</text>
-                </svg>
+                <button className="back-button" onClick={() => navigate('/login')} aria-label="Back">
+                    <i className='bx bx-arrow-back'></i>
+                </button>
             </header>
 
             <div className="signup-container">
                 {/* Left side: Images & Titles */}
                 <div className="signup-left-col">
+                    <svg width="80" height="32" viewBox="0 0 90 36" fill="none" xmlns="http://www.w3.org/2000/svg" className="signup-logo" onClick={() => navigate('/')}>
+                        <rect width="90" height="36" fill="#0058A3" />
+                        <ellipse cx="45" cy="18" rx="42" ry="15" fill="#FFCC00" />
+                        <text x="50%" y="54%" dominantBaseline="middle" textAnchor="middle" fontFamily="Arial" fontWeight="900" fontSize="20" fill="#0058A3" letterSpacing="1">IKEA</text>
+                    </svg>
+
                     <h1 className="signup-title">Create an IKEA Family<br />Profile</h1>
                     <p className="signup-subtitle">Already have an account? <a href="#" onClick={(e) => { e.preventDefault(); navigate('/login'); }}>Login</a></p>
 
                     <div className="image-collage">
-                        <div className="image-cell" style={{ backgroundImage: 'url("https://www.ikea.com/images/a-family-cooking-in-a-kitchen-together-dad-helps-one-looki-5f0eeac77afdc2475e1146c9f6a73c09.jpg")' }}></div>
                         <div className="image-cell tall" style={{ backgroundImage: 'url("https://www.ikea.com/images/a-woman-sitting-on-a-yellow-armchair-reading-a-book-d1b4c37d6e60b10f545464ec950aed74.jpg")' }}></div>
+                        <div className="image-cell" style={{ backgroundImage: 'url("https://www.ikea.com/images/a-family-cooking-in-a-kitchen-together-dad-helps-one-looki-5f0eeac77afdc2475e1146c9f6a73c09.jpg")' }}></div>
                         <div className="image-cell" style={{ backgroundImage: 'url("https://www.ikea.com/images/a-close-up-of-hands-decorating-a-plant-pot-with-paint-21ea60959bbff0bcfdbf2d7bf8d5e8ff.jpg")' }}></div>
-                        <div className="image-cell tall" style={{ backgroundImage: 'url("https://www.ikea.com/images/a-man-and-a-woman-laughing-together-in-a-living-room-037035dbf5be3ae4fbaffaaeeff45439.jpg")' }}></div>
+                        <div className="image-cell" style={{ backgroundImage: 'url("https://www.ikea.com/images/a-man-and-a-woman-laughing-together-in-a-living-room-037035dbf5be3ae4fbaffaaeeff45439.jpg")' }}></div>
+                        <div className="image-cell tall" style={{ backgroundImage: 'url("https://www.ikea.com/images/a-family-cooking-in-a-kitchen-together-dad-helps-one-looki-5f0eeac77afdc2475e1146c9f6a73c09.jpg")' }}></div>
+                        <div className="image-cell" style={{ backgroundImage: 'url("https://www.ikea.com/images/a-close-up-of-hands-decorating-a-plant-pot-with-paint-21ea60959bbff0bcfdbf2d7bf8d5e8ff.jpg")' }}></div>
+                        <div className="image-cell tall" style={{ backgroundImage: 'url("https://www.ikea.com/images/a-woman-sitting-on-a-yellow-armchair-reading-a-book-d1b4c37d6e60b10f545464ec950aed74.jpg")' }}></div>
+                        <div className="image-cell" style={{ backgroundImage: 'url("https://www.ikea.com/images/a-man-and-a-woman-laughing-together-in-a-living-room-037035dbf5be3ae4fbaffaaeeff45439.jpg")' }}></div>
                     </div>
 
                     <div className="signup-footer-info">
