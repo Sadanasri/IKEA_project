@@ -6,6 +6,9 @@ import './styles/plp.css'; // Global CSS
 
 function App() {
   const [cartCount, setCartCount] = useState(0);
+  const [isLoggedIn, setIsLoggedIn] = useState(
+    localStorage.getItem('isLoggedIn') === 'true'
+  );
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -14,6 +17,11 @@ function App() {
   }, []);
 
   const addToCart = (product) => {
+    if (!isLoggedIn) {
+      alert("Please login to add items to your cart.");
+      navigate('/login');
+      return;
+    }
     const currentCart = JSON.parse(localStorage.getItem('ikeaCart') || '[]');
     currentCart.push(product);
     localStorage.setItem('ikeaCart', JSON.stringify(currentCart));
@@ -44,7 +52,18 @@ function App() {
 
           <div className="header-right">
             <div className="header-icon-group">
-              <button className="icon-btn" onClick={() => navigate('/login')}><i className='bx bx-user'></i><span>Hej! Log in or sign up</span></button>
+              {isLoggedIn ? (
+                <button className="icon-btn" onClick={() => {
+                  localStorage.removeItem('isLoggedIn');
+                  setIsLoggedIn(false);
+                }}>
+                  <i className='bx bx-log-out'></i><span>Logout</span>
+                </button>
+              ) : (
+                <button className="icon-btn" onClick={() => navigate('/login')}>
+                  <i className='bx bx-user'></i><span>Hej! Log in or sign up</span>
+                </button>
+              )}
               <button className="icon-btn icon-only"><i className='bx bx-heart'></i></button>
               <button className="icon-btn icon-only cart-btn" style={{ position: 'relative' }}>
                 <i className='bx bx-shopping-bag'></i>
@@ -72,7 +91,7 @@ function App() {
     <div className="app">
       <Routes>
         <Route path="/" element={<MainLayout />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
       </Routes>
     </div>
   )

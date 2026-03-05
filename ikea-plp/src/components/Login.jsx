@@ -1,14 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/login.css';
 
-export default function Login() {
+export default function Login({ setIsLoggedIn }) {
     const navigate = useNavigate();
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
 
     const handleLogin = (e) => {
         e.preventDefault();
-        // Simulate auth & return
-        // navigate('/'); 
+        if (!email.trim() || !password.trim()) {
+            setError('Please enter a valid email/phone and password.');
+            return;
+        }
+        setError('');
+
+        // Simulate auth success
+        localStorage.setItem('isLoggedIn', 'true');
+        if (setIsLoggedIn) setIsLoggedIn(true);
+        navigate('/');
     };
 
     return (
@@ -51,18 +62,32 @@ export default function Login() {
 
                         <div className="form-group">
                             <label htmlFor="email">Email or Verified Mobile Number</label>
-                            <input type="text" id="email" className="form-input" />
+                            <input
+                                type="text"
+                                id="email"
+                                className="form-input"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                            />
                             <div className="input-assist">Login <a href="#" style={{ fontWeight: 'bold', textDecoration: 'underline' }}>with an OTP</a></div>
                         </div>
 
                         <div className="form-group" style={{ marginTop: '2rem' }}>
                             <label htmlFor="password">Password</label>
                             <div className="password-wrapper">
-                                <input type="password" id="password" className="form-input" />
+                                <input
+                                    type="password"
+                                    id="password"
+                                    className="form-input"
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
+                                />
                                 <button type="button" className="eye-btn"><i className='bx bx-show'></i></button>
                             </div>
                             <div className="input-assist"><a href="#" style={{ fontWeight: 'bold', textDecoration: 'underline' }}>Forgot your password?</a></div>
                         </div>
+
+                        {error && <div className="error-message" style={{ color: '#d93e30', fontSize: '0.875rem', marginBottom: '1rem', fontWeight: 'bold' }}>{error}</div>}
 
                         <div className="checkbox-group">
                             <label className="custom-checkbox">
@@ -73,7 +98,7 @@ export default function Login() {
                             <button type="button" className="info-btn">i</button>
                         </div>
 
-                        <button type="submit" className="btn-primary black-btn" onClick={() => navigate('/')}>
+                        <button type="submit" className="btn-primary black-btn">
                             Continue
                         </button>
                     </form>
