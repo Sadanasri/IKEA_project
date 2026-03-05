@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import PLP from './components/PLP';
+import Login from './components/Login';
 import './styles/plp.css'; // Global CSS
 
 function App() {
   const [cartCount, setCartCount] = useState(0);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const savedCart = JSON.parse(localStorage.getItem('ikeaCart') || '[]');
@@ -17,18 +20,20 @@ function App() {
     setCartCount(currentCart.length);
   };
 
-  return (
-    <div className="app">
+  const MainLayout = () => (
+    <>
       {/* Header from the HTML */}
       <header className="header">
         <div className="header-container">
           <div className="header-left">
             <button className="menu-btn" aria-label="Menu"><i className='bx bx-menu'></i></button>
-            <svg width="90" height="36" viewBox="0 0 90 36" fill="none" xmlns="http://www.w3.org/2000/svg" className="logo">
-              <rect width="90" height="36" fill="#0058A3" />
-              <ellipse cx="45" cy="18" rx="42" ry="15" fill="#FFCC00" />
-              <text x="50%" y="54%" dominantBaseline="middle" textAnchor="middle" fontFamily="Arial, sans-serif" fontWeight="900" fontSize="20" fill="#0058A3" letterSpacing="1">IKEA</text>
-            </svg>
+            <a href="#" style={{ display: 'flex' }} onClick={(e) => { e.preventDefault(); navigate('/'); }}>
+              <svg width="90" height="36" viewBox="0 0 90 36" fill="none" xmlns="http://www.w3.org/2000/svg" className="logo">
+                <rect width="90" height="36" fill="#0058A3" />
+                <ellipse cx="45" cy="18" rx="42" ry="15" fill="#FFCC00" />
+                <text x="50%" y="54%" dominantBaseline="middle" textAnchor="middle" fontFamily="Arial, sans-serif" fontWeight="900" fontSize="20" fill="#0058A3" letterSpacing="1">IKEA</text>
+              </svg>
+            </a>
           </div>
 
           <div className="header-search">
@@ -39,7 +44,7 @@ function App() {
 
           <div className="header-right">
             <div className="header-icon-group">
-              <button className="icon-btn"><i className='bx bx-user'></i><span>Hej! Log in or sign up</span></button>
+              <button className="icon-btn" onClick={() => navigate('/login')}><i className='bx bx-user'></i><span>Hej! Log in or sign up</span></button>
               <button className="icon-btn icon-only"><i className='bx bx-heart'></i></button>
               <button className="icon-btn icon-only cart-btn" style={{ position: 'relative' }}>
                 <i className='bx bx-shopping-bag'></i>
@@ -60,6 +65,15 @@ function App() {
 
       {/* The main PLP view */}
       <PLP addToCart={addToCart} />
+    </>
+  );
+
+  return (
+    <div className="app">
+      <Routes>
+        <Route path="/" element={<MainLayout />} />
+        <Route path="/login" element={<Login />} />
+      </Routes>
     </div>
   )
 }

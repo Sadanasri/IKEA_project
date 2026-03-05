@@ -1,0 +1,292 @@
+/* Login Page Styles */
+
+.login-page {
+    display: flex;
+    min-height: 100vh;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Left Sidebar Area */
+.login-sidebar {
+    width: 35%;
+    background-color: var(--ikea-blue);
+    color: white;
+    padding: 2.5rem 3rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.back-btn {
+    position: absolute;
+    top: 2.5rem;
+    left: 2.5rem;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebar-content {
+    margin-top: 3rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.login-logo {
+    margin-bottom: 4rem;
+}
+
+.login-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 2rem;
+}
+
+.login-description {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    flex: 1;
+}
+
+.login-footer {
+    font-size: 0.75rem;
+    opacity: 0.8;
+}
+
+.login-footer a {
+    color: white;
+    text-decoration: underline;
+}
+
+.login-footer p {
+    margin-bottom: 0.5rem;
+}
+
+/* Right Form Area */
+.login-form-container {
+    width: 65%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    padding: 4rem 2rem;
+    align-items: flex-start;
+}
+
+.form-wrapper {
+    width: 100%;
+    max-width: 480px;
+    margin-top: 5rem;
+}
+
+.ikea-form {
+    border-bottom: 1px solid #dfdfdf;
+    padding-bottom: 2rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    font-size: 0.875rem;
+    color: var(--text-sec);
+    margin-bottom: 0.5rem;
+}
+
+.form-input {
+    padding: 0.875rem 1rem;
+    border: 1px solid #dfdfdf;
+    border-radius: 4px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
+}
+
+.form-input:focus {
+    border-color: var(--ikea-blue);
+    border-width: 2px;
+    padding: calc(0.875rem - 1px) calc(1rem - 1px);
+}
+
+.password-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.eye-btn {
+    position: absolute;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.25rem;
+    cursor: pointer;
+    color: var(--text-main);
+}
+
+.input-assist {
+    font-size: 0.875rem;
+    color: var(--text-main);
+    margin-top: 0.75rem;
+}
+
+.input-assist a {
+    color: var(--text-main);
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    margin: 2rem 0;
+    justify-content: space-between;
+}
+
+/* Custom Checkbox */
+.custom-checkbox {
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding-left: 30px;
+    cursor: pointer;
+    font-size: 0.875rem;
+    user-select: none;
+}
+
+.custom-checkbox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: absolute;
+    top: -2px;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: white;
+    border: 1px solid var(--text-main);
+    border-radius: 4px;
+}
+
+.custom-checkbox input:checked~.checkmark {
+    background-color: var(--ikea-blue);
+    border-color: var(--ikea-blue);
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.custom-checkbox input:checked~.checkmark:after {
+    display: block;
+}
+
+.custom-checkbox .checkmark:after {
+    left: 6px;
+    top: 2px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.info-btn {
+    background: #f5f5f5;
+    border: none;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    color: var(--text-main);
+    cursor: pointer;
+}
+
+/* Buttons */
+.btn-primary.black-btn {
+    background-color: #111;
+    color: white;
+    width: 100%;
+    padding: 1.25rem;
+    border: none;
+    border-radius: 40px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-primary.black-btn:hover {
+    background-color: #333;
+}
+
+.btn-secondary.outline-btn {
+    background-color: white;
+    color: #111;
+    border: 1px solid #111;
+    width: 100%;
+    padding: 1.25rem;
+    border-radius: 40px;
+    font-weight: bold;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-secondary.outline-btn:hover {
+    border-width: 2px;
+    padding: calc(1.25rem - 1px);
+}
+
+.create-account-section {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .login-page {
+        flex-direction: column;
+    }
+
+    .login-sidebar {
+        width: 100%;
+        padding: 2rem 1.5rem;
+        min-height: auto;
+    }
+
+    .login-logo {
+        margin-bottom: 2rem;
+    }
+
+    .login-title {
+        font-size: 2rem;
+    }
+
+    .login-form-container {
+        width: 100%;
+        padding: 2rem 1.5rem;
+    }
+
+    .form-wrapper {
+        margin-top: 1rem;
+    }
+}
