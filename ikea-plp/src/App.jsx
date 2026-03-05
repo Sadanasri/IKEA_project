@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import PLP from './components/PLP';
 import Login from './components/Login';
+import SignupPersonal from './components/SignupPersonal';
+import SignupBusiness from './components/SignupBusiness';
 import './styles/plp.css'; // Global CSS
 
 function App() {
@@ -92,6 +94,8 @@ function App() {
       <Routes>
         <Route path="/" element={<MainLayout />} />
         <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
+        <Route path="/signup-personal" element={<SignupPersonal />} />
+        <Route path="/signup-business" element={<SignupBusiness />} />
       </Routes>
     </div>
   )
