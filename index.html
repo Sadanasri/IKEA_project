@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - IKEA Clone</title>
+    <!-- Google Fonts for modern typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Boxicons for clean, modern icons -->
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <div class="header-left">
+                <button class="menu-btn" aria-label="Menu"><i class='bx bx-menu'></i></button>
+                <!-- SVG IKEA Logo -->
+                <svg width="90" height="36" viewBox="0 0 90 36" fill="none" xmlns="http://www.w3.org/2000/svg" class="logo">
+                    <rect width="90" height="36" fill="#0058A3"/>
+                    <ellipse cx="45" cy="18" rx="42" ry="15" fill="#FFCC00"/>
+                    <text x="50%" y="54%" dominant-baseline="middle" text-anchor="middle" font-family="Arial, sans-serif" font-weight="900" font-size="20" fill="#0058A3" letter-spacing="1">IKEA</text>
+                </svg>
+            </div>
+            
+            <div class="header-search">
+                <i class='bx bx-search search-icon'></i>
+                <input type="text" placeholder="What are you looking for?" class="search-input">
+                <button class="camera-btn" aria-label="Visual Search"><i class='bx bx-camera'></i></button>
+            </div>
+            
+            <div class="header-right">
+                <div class="header-icon-group">
+                    <button class="icon-btn"><i class='bx bx-user'></i><span>Hej! Log in or sign up</span></button>
+                    <button class="icon-btn icon-only"><i class='bx bx-heart'></i></button>
+                    <button class="icon-btn icon-only cart-btn"><i class='bx bx-shopping-bag'></i></button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="breadcrumbs">
+            <a href="#">Products</a> &gt; <span>Sofas & armchairs</span>
+        </div>
+        
+        <div class="page-header">
+            <h1>Sofas & armchairs</h1>
+            <p class="subtitle">Comfort that looks as good as it feels. Explore our wide range of seating options.</p>
+        </div>
+
+        <!-- Tool Bar: Filter & Sort -->
+        <div class="toolbar">
+            <div class="toolbar-left">
+                <button id="mobile-filter-btn" class="toolbar-btn primary-outline">
+                    <span>Sort & Filter</span> <i class='bx bx-slider-alt'></i>
+                </button>
+                <div class="desktop-filters">
+                    <button class="toolbar-btn secondary-btn" data-filter="Sort">Sort <i class='bx bx-chevron-down'></i></button>
+                    <button class="toolbar-btn secondary-btn" data-filter="Size">Size <i class='bx bx-chevron-down'></i></button>
+                    <button class="toolbar-btn secondary-btn" data-filter="Color">Color <i class='bx bx-chevron-down'></i></button>
+                    <button class="toolbar-btn secondary-btn" data-filter="Price">Price <i class='bx bx-chevron-down'></i></button>
+                    <button class="toolbar-btn secondary-btn" data-filter="Category">Category <i class='bx bx-chevron-down'></i></button>
+                </div>
+                
+                <!-- Sort Dropdown (Hidden initially) -->
+                <div class="dropdown-menu" id="sort-dropdown">
+                    <ul>
+                        <li><label><input type="radio" name="sort" value="relevance" checked> Best match</label></li>
+                        <li><label><input type="radio" name="sort" value="price-low"> Price: low to high</label></li>
+                        <li><label><input type="radio" name="sort" value="price-high"> Price: high to low</label></li>
+                        <li><label><input type="radio" name="sort" value="newest"> Newest</label></li>
+                        <li><label><input type="radio" name="sort" value="name-asc"> Name</label></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="toolbar-right">
+                <span id="product-count">0 items</span>
+            </div>
+        </div>
+
+        <!-- Layout -->
+        <div class="plp-layout">
+            <!-- Sidebar / Applied Filters Summary (For Desktop) -->
+            <aside class="sidebar" id="filter-sidebar">
+                <div class="sidebar-header mobile-only">
+                    <h2>Filter and sort</h2>
+                    <button id="close-sidebar-btn" aria-label="Close filters"><i class='bx bx-x'></i></button>
+                </div>
+                
+                <div class="filter-section">
+                    <div class="filter-header" onclick="toggleSection(this)">
+                        <h3>Category</h3>
+                        <i class='bx bx-chevron-up'></i>
+                    </div>
+                    <div class="filter-content">
+                        <label class="checkbox-container">
+                            <input type="checkbox" value="sofas" class="category-filter" checked>
+                            <span class="checkmark"></span>
+                            Fabric sofas
+                        </label>
+                        <label class="checkbox-container">
+                            <input type="checkbox" value="armchairs" class="category-filter">
+                            <span class="checkmark"></span>
+                            Armchairs
+                        </label>
+                        <label class="checkbox-container">
+                            <input type="checkbox" value="sofabeds" class="category-filter">
+                            <span class="checkmark"></span>
+                            Sofa-beds
+                        </label>
+                    </div>
+                </div>
+
+                <div class="filter-section">
+                    <div class="filter-header" onclick="toggleSection(this)">
+                        <h3>Price</h3>
+                        <i class='bx bx-chevron-up'></i>
+                    </div>
+                    <div class="filter-content">
+                        <div class="price-range">
+                            <div class="price-inputs">
+                                <div class="input-group">
+                                    <span class="currency">₹</span>
+                                    <input type="number" id="min-price" value="0" min="0">
+                                </div>
+                                <span class="separator">-</span>
+                                <div class="input-group">
+                                    <span class="currency">₹</span>
+                                    <input type="number" id="max-price" value="100000" min="0">
+                                </div>
+                            </div>
+                            <button class="apply-btn" id="apply-price-btn">Apply</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="filter-actions mobile-only">
+                    <button class="clear-btn" id="clear-filters-btn">Clear all</button>
+                    <button class="show-results-btn" id="show-results-btn">Show products</button>
+                </div>
+            </aside>
+
+            <!-- Product Grid Area -->
+            <div class="product-area">
+                <div class="active-filters" id="active-filters">
+                    <!-- populated by JS -->
+                </div>
+
+                <div class="product-grid" id="product-grid">
+                    <!-- Products injected via JS -->
+                </div>
+
+                <!-- Pagination -->
+                <div class="pagination-container">
+                    <div class="pagination-info">Showing <span id="page-start">1</span> - <span id="page-end">24</span> of <span id="total-count">48</span></div>
+                    <div class="pagination" id="pagination">
+                        <!-- Pagination buttons injected via JS -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Overlay for Sidebar -->
+    <div class="overlay" id="sidebar-overlay"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
