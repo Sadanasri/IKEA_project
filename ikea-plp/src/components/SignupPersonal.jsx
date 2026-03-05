@@ -1,6 +1,14 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/signup.css';
+import img1 from '../assets/images/per1.jpg';
+import img2 from '../assets/images/per2.jpg';
+import img3 from '../assets/images/per3.jpg';
+import img4 from '../assets/images/per4.jpg';
+import img5 from '../assets/images/per5.jpg';
+import img6 from '../assets/images/per6.jpg';
+import img7 from '../assets/images/per7.jpg';
+import img8 from '../assets/images/per8.jpg';
 
 export default function SignupPersonal() {
     const navigate = useNavigate();
@@ -32,14 +40,14 @@ export default function SignupPersonal() {
                     <p className="signup-subtitle">Already have an account? <a href="#" onClick={(e) => { e.preventDefault(); navigate('/login'); }}>Login</a></p>
 
                     <div className="image-collage">
-                        <div className="image-cell tall" style={{ backgroundImage: 'url("https://www.ikea.com/images/a-woman-sitting-on-a-yellow-armchair-reading-a-book-d1b4c37d6e60b10f545464ec950aed74.jpg")' }}></div>
-                        <div className="image-cell" style={{ backgroundImage: 'url("https://www.ikea.com/images/a-family-cooking-in-a-kitchen-together-dad-helps-one-looki-5f0eeac77afdc2475e1146c9f6a73c09.jpg")' }}></div>
-                        <div className="image-cell" style={{ backgroundImage: 'url("https://www.ikea.com/images/a-close-up-of-hands-decorating-a-plant-pot-with-paint-21ea60959bbff0bcfdbf2d7bf8d5e8ff.jpg")' }}></div>
-                        <div className="image-cell" style={{ backgroundImage: 'url("https://www.ikea.com/images/a-man-and-a-woman-laughing-together-in-a-living-room-037035dbf5be3ae4fbaffaaeeff45439.jpg")' }}></div>
-                        <div className="image-cell tall" style={{ backgroundImage: 'url("https://www.ikea.com/images/a-family-cooking-in-a-kitchen-together-dad-helps-one-looki-5f0eeac77afdc2475e1146c9f6a73c09.jpg")' }}></div>
-                        <div className="image-cell" style={{ backgroundImage: 'url("https://www.ikea.com/images/a-close-up-of-hands-decorating-a-plant-pot-with-paint-21ea60959bbff0bcfdbf2d7bf8d5e8ff.jpg")' }}></div>
-                        <div className="image-cell tall" style={{ backgroundImage: 'url("https://www.ikea.com/images/a-woman-sitting-on-a-yellow-armchair-reading-a-book-d1b4c37d6e60b10f545464ec950aed74.jpg")' }}></div>
-                        <div className="image-cell" style={{ backgroundImage: 'url("https://www.ikea.com/images/a-man-and-a-woman-laughing-together-in-a-living-room-037035dbf5be3ae4fbaffaaeeff45439.jpg")' }}></div>
+                        <div className="image-cell tall" style={{ backgroundImage: `url(${img1})` }}></div>
+                        <div className="image-cell" style={{ backgroundImage: `url(${img2})` }}></div>
+                        <div className="image-cell" style={{ backgroundImage: `url(${img3})` }}></div>
+                        <div className="image-cell" style={{ backgroundImage: `url(${img4})` }}></div>
+                        <div className="image-cell" style={{ backgroundImage: `url(${img5})` }}></div>
+                        <div className="image-cell" style={{ backgroundImage: `url(${img6})` }}></div>
+                        <div className="image-cell tall" style={{ backgroundImage: `url(${img7})` }}></div>
+                        <div className="image-cell" style={{ backgroundImage: `url(${img8})` }}></div>
                     </div>
 
                     <div className="signup-footer-info">

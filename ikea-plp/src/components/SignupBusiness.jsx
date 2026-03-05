@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/signup.css';
+import img1 from '../assets/images/bus1.jpg';
+import img2 from '../assets/images/bus2.jpg';
+import img3 from '../assets/images/bus3.jpg';
+import img4 from '../assets/images/bus4.jpg';
 
 export default function SignupBusiness() {
     const navigate = useNavigate();
@@ -40,10 +44,10 @@ export default function SignupBusiness() {
                     <p className="signup-subtitle" style={{ marginBottom: '0' }}>...and a whole lot more!</p>
 
                     <div className="image-collage" style={{ marginTop: '1.5rem' }}>
-                        <div className="image-cell tall" style={{ backgroundImage: 'url("https://www.ikea.com/images/three-people-in-an-office-two-of-them-are-standing-by-a-coff-8f1eafd3c45731ed0e23812738d2a13e.jpg")' }}></div>
-                        <div className="image-cell" style={{ backgroundImage: 'url("https://www.ikea.com/images/a-person-sitting-in-an-office-chair-at-a-desk-with-a-laptop--2b202c6b412e690fca7d52a2f8fc771f.jpg")' }}></div>
-                        <div className="image-cell tall" style={{ backgroundImage: 'url("https://www.ikea.com/images/two-people-standing-in-an-office-with-a-clothes-rack-in-the--3743ecac23b10b7cd80a068ac59baabc.jpg")' }}></div>
-                        <div className="image-cell" style={{ backgroundImage: 'url("https://www.ikea.com/images/a-woman-standing-in-an-office-with-a-laptop-b3c7d6fc2cfc9cd18cbfa495679589d8.jpg")' }}></div>
+                        <div className="image-cell tall" style={{ backgroundImage: `url(${img1})` }}></div>
+                        <div className="image-cell" style={{ backgroundImage: `url(${img2})` }}></div>
+                        <div className="image-cell tall" style={{ backgroundImage: `url(${img3})` }}></div>
+                        <div className="image-cell" style={{ backgroundImage: `url(${img4})` }}></div>
                     </div>
                 </div>
 
