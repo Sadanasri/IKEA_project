@@ -14,6 +14,7 @@ export default function SignupPersonal() {
     return (
         <div className="signup-page">
             <header className="signup-header">
+                <i className='bx bx-left-arrow-alt' style={{ fontSize: '24px', cursor: 'pointer', marginRight: '1rem' }} onClick={() => navigate('/login')}></i>
                 <svg width="60" height="24" viewBox="0 0 90 36" fill="none" xmlns="http://www.w3.org/2000/svg" className="signup-logo" onClick={() => navigate('/')}>
                     <rect width="90" height="36" fill="#0058A3" />
                     <ellipse cx="45" cy="18" rx="42" ry="15" fill="#FFCC00" />
